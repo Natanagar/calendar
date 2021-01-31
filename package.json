@@ -3,30 +3,71 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
+    "@ant-design/icons": "^4.0.5",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@testing-library/user-event": "^12.6.0",
+    "@types/jest": "^26.0.19",
+    "@types/lodash": "^4.14.138",
+    "@types/node": "^12.19.9",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "@types/styled-components": "^4.1.19",
+    "antd": "^4.1.1",
+    "axios": "^0.18.1",
+    "bcrypt": "^4.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
+    "express-jwt": "^6.0.0",
+    "history": "^5.0.0",
+    "js-cookie": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.19",
+    "moment": "^2.29.1",
+    "mongoose": "^5.9.15",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "react": "^17.0.1",
+    "react-canvas-draw": "^1.1.1",
     "react-dom": "^17.0.1",
+    "react-input-color": "^4.0.0",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
-    "typescript": "^4.0.3",
+    "reactjs-localstorage": "^1.0.1",
+    "styled-components": "^4.3.2",
+    "typescript": "^4.1.3",
     "web-vitals": "^0.2.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "resolutions": {
+    "**/@typescript-eslint/eslint-plugin": "^4.1.1",
+    "**/@typescript-eslint/parser": "^4.1.1"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
+  "scripts": {
+    "start": "cross-env PORT=3006 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom --verbose=false",
+    "test:ci": "cross-env CI=true react-scripts test --ci --reporters=default --detectOpenHandles --coverage --runInBand --forceExit",
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext=jsx,ts,tsx src",
+    "lint:fix": "eslint --ext=jsx,ts,tsx src --fix",
+    "server": "node-env-run server --exec nodemon",
+    "dev": "run-p server start"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --ext=jsx,ts,tsx src"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lint-staged",
+      "pre-push": "cross-env CI=true react-scripts test --env=jsdom"
+    }
   },
   "browserslist": {
     "production": [
@@ -39,5 +80,35 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/react": "^10.0.4",
+    "@types/history": "^4.7.8",
+    "@types/js-cookie": "^2.2.6",
+    "@types/react-canvas-draw": "^1.1.0",
+    "@types/react-router-dom": "^5.1.6",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "body-parser": "^1.19.0",
+    "cross-env": "^5.2.1",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "express": "^4.17.1",
+    "express-pino-logger": "^5.0.0",
+    "husky": "^1.3.1",
+    "jest-teamcity-reporter": "^0.9.0",
+    "lint-staged": "^8.2.1",
+    "node-env-run": "^4.0.2",
+    "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5",
+    "pino-colada": "^2.1.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "^1.11.1"
   }
 }
