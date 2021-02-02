@@ -4,10 +4,15 @@ import "./index.css";
 import App from "./App";
 import "antd/dist/antd.css";
 import reportWebVitals from "./reportWebVitals";
+import { config } from "./components/firebase/firebase";
+import Firebase, { FirebaseContext } from "./components/firebase/index";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <FirebaseContext.Provider value={new Firebase(config)}>
+      <App />
+    </FirebaseContext.Provider>
+    ,
   </React.StrictMode>,
   document.getElementById("root")
 );

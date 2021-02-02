@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AuthForm from "../components/auth/AuthForm";
 import NotePage from "../components/notes/NotePage";
 import CalendarPage from "../components/calendar/CalendarPage";
-import RegistrationPage from "../components/auth/RegistrationPage";
+import RegistrationWithFirebase from "../components/auth/RegistrationPage";
 import DashboardLayout from "../components/dashboard/layout/DashboardLayout";
 // import { getAuthToken } from '../model/authHelpers';
 
@@ -37,7 +37,7 @@ const routes: RouteType[] = [
   {
     path: paths.REGISTER,
     name: "Registration",
-    Component: RegistrationPage
+    Component: RegistrationWithFirebase
   },
   {
     path: paths.MAIN,
